@@ -1,0 +1,3 @@
+﻿  12_4_String1.cpp
+e:\programy\nauka programownia\c++ zwykly\c++ prata\12 klasy a dynamiczny podzial pamieci\12_4 string\12_4_string1\12_4_string1.cpp(92): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
+  12_4_String1.vcxproj -> E:\Programy\Nauka Programownia\C++ zwykly\C++ Prata\12 Klasy a dynamiczny podzial pamieci\12_4 String\12_4_String1\Debug\12_4_String1.exe
