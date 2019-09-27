@@ -68,9 +68,20 @@ String & String::operator=(const char * s)
 	return *this;
 }
 
-String  operator+(const String &str1, const String &str2)
+String operator + (String const &c1, String const &c2)
 {
-	return String(str1.str + str2.str);
+
+
+	String ZwrotSumy; 
+	delete[] ZwrotSumy.str;
+	ZwrotSumy.len = c1.len + c2.len;
+	ZwrotSumy.str = new char[ZwrotSumy.len + 1];
+	strcpy_s(ZwrotSumy.str, c1.len + 1, c1.str);			// (char, int, char)
+	//    strncat_s( dest, _countof(dest), "dachshunds", 15 );
+	strncat_s(ZwrotSumy.str, ZwrotSumy.len + 1, c2.str, c2.len + 1);				// (char, char, int)
+
+	std::cout << ZwrotSumy.str;
+	return ZwrotSumy;
 }
 
 
