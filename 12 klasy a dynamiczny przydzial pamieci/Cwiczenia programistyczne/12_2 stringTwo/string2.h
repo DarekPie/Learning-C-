@@ -26,6 +26,8 @@ public:
 	//metody przeciazajace operatory
 	String & operator=(const String &);
 	String & operator=(const char *);
+
+
 	char & operator[](int i);
 	const char & operator[](int i) const;
 
@@ -36,6 +38,7 @@ public:
 	friend ostream & operator<<(ostream &os, const String &st);
 	friend istream & operator>>(istream &is, String &st);
 	friend String operator + (String const&, String const&);
+	void stringlow();
 	
 
 	//metoda statyczna

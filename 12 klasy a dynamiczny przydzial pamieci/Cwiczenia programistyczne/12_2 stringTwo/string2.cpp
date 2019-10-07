@@ -1,5 +1,6 @@
 #include <cstring>
 #include "string2.h"
+#include <cctype>
 using std::cin;
 using std::cout;
 using std::ostream;
@@ -126,3 +127,22 @@ istream & operator>>(istream & is, String & st)
 		continue;
 	return is;
 }
+
+void String::stringlow()
+{
+	//for (int i = 0; i < len; i++)
+	//	putchar(tolower(str[i]));
+	//std::cout << str;
+
+
+	char * newstring;
+	newstring = new char[len + 1];
+	strcpy_s(newstring, len + 1, str);
+
+	for (int i = 0; i < len; i++)
+		newstring[i] = tolower(newstring[i]);
+
+	strcpy_s(str, len + 1, newstring);
+
+}
+
