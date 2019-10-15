@@ -81,7 +81,7 @@ String operator + (String const &c1, String const &c2)
 	//    strncat_s( dest, _countof(dest), "dachshunds", 15 );
 	strncat_s(ZwrotSumy.str, ZwrotSumy.len + 1, c2.str, c2.len + 1);				// (char, char, int)
 
-	std::cout << ZwrotSumy.str;
+//	std::cout << ZwrotSumy.str << std::endl;
 	return ZwrotSumy;
 }
 
@@ -146,3 +146,51 @@ void String::stringlow()
 
 }
 
+char * String::stringlow(const char * s)
+{
+
+	int dlugosc = std::strlen(s);
+	char * newstring;
+	newstring = new char[dlugosc + 1];
+	strcpy_s(newstring, dlugosc + 1, s);
+
+	for (int i = 0; i < len; i++)
+		newstring[i] = tolower(newstring[i]);
+
+//	strcpy_s(str, len + 1, newstring);
+
+	return newstring;
+}
+
+
+
+void String::stringup()
+{
+	char * newstring;
+	newstring = new char[len + 1];
+	strcpy_s(newstring, len + 1, str);
+
+	for (int i = 0; i < len; i++)
+		newstring[i] = toupper(newstring[i]);
+
+	strcpy_s(str, len + 1, newstring);
+}
+
+int String::has(const char * s)
+{
+	int howMany = 0;
+	char * newstring;
+	newstring = new char[len + 1];
+
+	strcpy_s(newstring, len + 1, str);
+	newstring = stringlow(newstring);
+	s = stringlow(s);
+
+	for (int i = 0; i < len; i++)
+	{
+		if (newstring[i] == s[0])
+			howMany++;
+	}
+
+	return howMany;
+}

@@ -39,6 +39,9 @@ public:
 	friend istream & operator>>(istream &is, String &st);
 	friend String operator + (String const&, String const&);
 	void stringlow();
+	char * stringlow(const char * s);
+	void stringup();
+	int has(const char * s);
 	
 
 	//metoda statyczna
