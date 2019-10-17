@@ -1,20 +1,33 @@
 #include <iostream>
 #include <cstring>
+#include <cctype>
+#include <stdlib.h>
 #include "stock2.h"
+using std::ostream;
+using std::istream;
+
+int Stock::num_companies = 0;
+
+int Stock::HowMany() { return num_companies; }
 
 
 Stock::Stock()
 {
-	std::strcpy(company, "brak nazwy");
-	shares = 0;
-	share_val = 0;
-	total_val = 0;
+	len = 4;
+	company = new char[1];
+	company[0] = '\0';
+	num_companies++;
 }
 
 Stock::Stock(const char * co, int n, double pr)
 {
-	std::strncpy(company, co, 29);
-	company[29] = '\0';
+
+
+	len = std::strlen(co);
+	company = new char[len + 1];
+	strcpy_s(company, len +1, co);
+	num_companies++;
+
 	if (n < 0)
 	{
 		std::cerr << "Liczba udzialow nie moze byc ujemna; ustalam liczbe udzalow w " << company << "na 0.\n";
@@ -22,13 +35,16 @@ Stock::Stock(const char * co, int n, double pr)
 	}
 	else
 		shares = n;
-
+	
 	share_val = pr;
 	set_tot();
+
 }
 
 Stock::~Stock()
 {
+	--num_companies;
+	delete[] company;
 }
 
 void Stock::buy(int num, double price)
