@@ -44,7 +44,7 @@ Stock::Stock(const char * co, int n, double pr)
 Stock::~Stock()
 {
 	--num_companies;
-	delete[] company;
+//	delete company;
 }
 
 void Stock::buy(int num, double price)
@@ -98,4 +98,14 @@ const Stock & Stock::topval(const Stock & s) const
 		return s;
 	else
 		return *this;
+}
+
+ostream & operator<<(ostream & os, const Stock & st)
+{
+	
+	os << "Spolka: " << st.company
+		<< " Liczba udzalow: " << st.shares << "\n"
+		<< "Cena udzalu: " << st.share_val << " zl " << "\n"
+		<< "Laczna wartosc udzalow: " << st.total_val << " zl " << "\n";
+	return os;
 }

@@ -22,7 +22,8 @@ int main()
 	int st;
 	for (st = 0; st < STKS; st++)
 	{
-		stocks[st].show();
+//		stocks[st].show();
+		cout << stocks[st];
 	}
 
 	Stock top = stocks[0];
@@ -32,7 +33,8 @@ int main()
 	}
 
 	cout << "\nNajbardziej wartosciowe udzialy:\n";
-	top.show();
+//	top.show();
+	cout << top;
 
 	return 0;
 }

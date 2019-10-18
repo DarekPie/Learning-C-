@@ -25,6 +25,7 @@ class Stock
 		void update(double price);
 		void show();
 		const Stock & topval(const Stock & s) const;
+		friend ostream & operator<<(ostream &os, const Stock &st);
 };
 
 
