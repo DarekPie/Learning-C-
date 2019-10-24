@@ -8,8 +8,8 @@ class Stack
 	private:
 		enum {MAX = 10};
 		Item * pitems;
-		int size;
-		int top;
+		int size;									// liczba elementow 
+		int top;									// indeks szczytu
 	public:
 		Stack(int n = 10);							// tworzy stos o pojemnosci n elementow
 		Stack(const Stack & st);

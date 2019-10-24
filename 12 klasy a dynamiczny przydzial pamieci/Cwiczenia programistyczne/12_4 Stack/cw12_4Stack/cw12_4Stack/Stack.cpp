@@ -2,14 +2,24 @@
 
 Stack::Stack(int n)
 {
+	top = 0;
+	size = n;
+	pitems = new Item[n];
 }
 
 Stack::Stack(const Stack & st)
 {
+	top = st.top;
+	size = st.size;
+	//pitems = st.pitems;
+	for (int i = 0; i < size; i++)
+		pitems[i] = st.pitems[i];
+
 }
 
 Stack::~Stack()
 {
+	delete[] pitems;
 }
 
 bool Stack::isempty() const
@@ -46,5 +56,15 @@ bool Stack::pop(Item & item)
 
 Stack & Stack::operator=(const Stack & st)
 {
-	// TODO: insert return statement here
+	if (this == &st)
+		return *this;
+
+	delete[]pitems;
+	size = st.size;
+	pitems = new Item[size];
+	for (int i = 0; i < size; i++)
+		pitems[i] = st.pitems[i];
+	top = st.top;
+
+	return *this;
 }
