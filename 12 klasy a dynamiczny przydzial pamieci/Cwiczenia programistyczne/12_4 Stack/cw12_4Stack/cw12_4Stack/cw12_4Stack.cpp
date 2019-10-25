@@ -6,6 +6,7 @@ int main()
 {
 	using namespace std;
 	Stack st; 
+	Stack s2; 
 	char ch;
 	unsigned long po;
 	cout << "Nacisnij D, aby wprwoadzic deklaracje, \n" << "P, aby przetworzyc deklaracje lub K, aby zakonczyc.\n";
@@ -27,6 +28,7 @@ int main()
 						cout << "Stos pelen!\n";
 					else
 						st.push(po);
+					s2 = st;
 					break;
 		case 'P':
 		case 'p':	if (st.isempty())
@@ -42,6 +44,7 @@ int main()
 	}
 	cout << "Fajrant!\n";
 
+	cout << "Deklaracje nr " << po << " zdjeta\n";
 
 
 	return 0;

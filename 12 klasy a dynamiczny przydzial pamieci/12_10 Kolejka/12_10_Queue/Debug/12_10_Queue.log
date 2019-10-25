@@ -1,2 +1,5 @@
-﻿  queue.cpp
-  12_10_Queue.vcxproj -> E:\Programy\Nauka Programownia\C++ zwykly\C++ Prata\12 Klasy a dynamiczny podzial pamieci\12_10 Kolejka\12_10_Queue\Debug\12_10_Queue.exe
+﻿  12_10_Queue.cpp
+d:\git\learning-c-\12 klasy a dynamiczny przydzial pamieci\12_10 kolejka\12_10_queue\12_10_queue.cpp(16): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  queue.cpp
+  Generating Code...
+  12_10_Queue.vcxproj -> D:\git\Learning-C-\12 klasy a dynamiczny przydzial pamieci\12_10 Kolejka\12_10_Queue\Debug\12_10_Queue.exe
