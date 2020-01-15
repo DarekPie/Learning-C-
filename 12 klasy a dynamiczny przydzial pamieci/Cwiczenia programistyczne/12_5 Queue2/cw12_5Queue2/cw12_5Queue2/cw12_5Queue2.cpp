@@ -28,11 +28,17 @@ int main()
 	// symulacja z jednominutowa rozdzielczoscia
 	long cyclelimit = MIN_PER_HR * hours;			// liczba cykli
 
-	cout << "Podaj liczbe klientow  na godzine: ";
-	double perhour;
-	cin >> perhour;
+	//cout << "Podaj liczbe klientow  na godzine: ";
+	//double perhour;
+	//cin >> perhour;
+	//double min_per_cust;							// sredni odstep czasowy miedzy klientami
+	//min_per_cust = MIN_PER_HR / perhour;
+
+	double perhour;									// ???????do wyznaczenia! ?????
+	
 	double min_per_cust;							// sredni odstep czasowy miedzy klientami
-	min_per_cust = MIN_PER_HR / perhour;
+	min_per_cust = MIN_PER_HR;						// wg zalozenia - sr czas oczekiwania ma byc 1 minuta
+
 
 	Item temp;									// Dane nowego klienta
 	long turnways = 0;							// liczba klientow odsylanych z kolejki
@@ -41,6 +47,10 @@ int main()
 	long sum_line = 0;							// ³¹czna liczba oczekujacych 
 	int wait_time = 0;							// czas do zwolnienia bankomatu
 	long line_wait = 0;							// ³¹czny czas oczekiwania
+
+
+
+
 
 //  rozpoczêcie  symulacji
 	for (int cycle = 0; cycle < cyclelimit; cycle++)
