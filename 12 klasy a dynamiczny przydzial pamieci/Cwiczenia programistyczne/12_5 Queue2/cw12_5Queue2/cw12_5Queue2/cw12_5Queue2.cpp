@@ -12,32 +12,29 @@ int main()
 	using std::cout;
 	using std::endl;
 	using std::ios_base;
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// przygotowanie symulacji
 	std::srand(std::time(0));						// inicjalizacja generatora liczba losowych
 
 	cout << "Studium przypadku: bankomat Bank Stu Kas\n";
-	cout << "Podaj maksymalna dlugosc kolejki: ";
-	int qs;
-	cin >> qs;
-	Queue line(qs);									// w kolejce moze stanac do qs klientow
+	cout << "Podaj maksymalna dlugosc kolejki: "; 
+	
+//	cin >> qs;								// do iteracji! DO PÊTLI!!!
+								// w kolejce moze stanac do qs klientow		DO PÊTLI!!! 
 
 	cout << "Podaj symulowany czas (w godiznach) :";
-	int hours;
-	cin >> hours;
+	int hours = 100;
+	//cin >> hours;							// < 100 h! ale zostawmy stale
 
 	// symulacja z jednominutowa rozdzielczoscia
 	long cyclelimit = MIN_PER_HR * hours;			// liczba cykli
-
-	//cout << "Podaj liczbe klientow  na godzine: ";
-	//double perhour;
-	//cin >> perhour;
-	//double min_per_cust;							// sredni odstep czasowy miedzy klientami
-	//min_per_cust = MIN_PER_HR / perhour;
-
-	double perhour;									// ???????do wyznaczenia! ?????
+	double min_per_cust = 1;						// sredni odstep czasow ma wynosic minute! 
+	double perhour = MIN_PER_HR / min_per_cust;		// Liczba klientow na godzine - wychodzi ze jest ich 
 	
-	double min_per_cust;							// sredni odstep czasowy miedzy klientami
-	min_per_cust = MIN_PER_HR;						// wg zalozenia - sr czas oczekiwania ma byc 1 minuta
+						// wg zalozenia - sr czas oczekiwania ma byc 1 minuta
 
 
 	Item temp;									// Dane nowego klienta
@@ -47,39 +44,59 @@ int main()
 	long sum_line = 0;							// ³¹czna liczba oczekujacych 
 	int wait_time = 0;							// czas do zwolnienia bankomatu
 	long line_wait = 0;							// ³¹czny czas oczekiwania
+	double t_sr = 0;							// sredni czas oczekiwania ma wyniesc minute! 
+	int qs = 1;									// maksymalna ilosc klientow w kolejce 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
 
+
+
+
+
+
+
+
+
+
+	// petla qs ew. while 
+	while (t_sr <= 1)
+	{
+		Queue line(qs);
+		for (int cycle = 0; cycle < cyclelimit; cycle++)
+		{
+			if (newcustomer(min_per_cust))			// mamy nowego chêtnego
+			{
+				if (line.isfull())
+					turnways++;
+				else
+				{
+					customers++;
+					temp.set(cycle);				// czas przybycia = nr cyklu
+					line.enqueue(temp);				// do³¹czenie klienta do kolejki
+				}
+			}
+
+			if (wait_time <= 0 && !line.isempty())
+			{
+				line.dequeue(temp);					// nastepny do obs³uzenia
+				wait_time = temp.ptime();			// czas obs³ugi = wait_time
+				line_wait += cycle - temp.when();
+				served++;
+			}
+
+			if (wait_time > 0)
+				wait_time--;
+
+			sum_line += line.quecount();
+		}
+
+		t_sr = (double)line_wait / served;
+	}
 
 //  rozpoczêcie  symulacji
-	for (int cycle = 0; cycle < cyclelimit; cycle++)
-	{
-		if (newcustomer(min_per_cust))			// mamy nowego chêtnego
-		{
-			if (line.isfull())
-				turnways++;
-			else
-			{
-				customers++;
-				temp.set(cycle);				// czas przybycia = nr cyklu
-				line.enqueue(temp);				// do³¹czenie klienta do kolejki
-			}
-		}
 
-		if (wait_time <= 0 && !line.isempty())
-		{
-			line.dequeue(temp);					// nastepny do obs³uzenia
-			wait_time = temp.ptime();			// czas obs³ugi = wait_time
-			line_wait += cycle - temp.when();
-			served++;
-		}
-
-		if (wait_time > 0)
-			wait_time--;
-
-		sum_line += line.quecount();
-	}
 
 	// zestawienie wynikow
 	if (customers > 0)
