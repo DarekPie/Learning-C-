@@ -19,8 +19,7 @@ int main()
 	// przygotowanie symulacji
 	std::srand(std::time(0));						// inicjalizacja generatora liczba losowych
 
-	cout << "Studium przypadku: bankomat Bank Stu Kas\n";
-	cout << "Podaj maksymalna dlugosc kolejki: "; 
+
 	
 //	cin >> qs;								// do iteracji! DO PÊTLI!!!
 								// w kolejce moze stanac do qs klientow		DO PÊTLI!!! 
@@ -48,7 +47,11 @@ int main()
 	int qs = 1;									// maksymalna ilosc klientow w kolejce 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+	cout << "Studium przypadku: bankomat Bank Stu Kas\n";
+	cout << "Symulowany czas (w godiznach) : " << hours << endl;
+	
 
+	
 
 
 
@@ -61,39 +64,67 @@ int main()
 
 
 	// petla qs ew. while 
-	while (t_sr <= 1)
+
+	while (min_per_cust < 60)
+		Item temp;									// Dane nowego klienta
+		turnways = 0;							// liczba klientow odsylanych z kolejki
+		customers = 0;							// liczba klientow przyjetych do kolejki
+		served = 0;							// liczba klientow obsluzonych w symulacji
+		sum_line = 0;							// ³¹czna liczba oczekujacych 
+		wait_time = 0;							// czas do zwolnienia bankomatu
+		line_wait = 0;							// ³¹czny czas oczekiwania
+//		t_sr = 0;							// sredni czas oczekiwania ma wyniesc minute! 
+		qs = 1;									// maksymalna ilosc klientow w kolejce 
+
+
 	{
-		Queue line(qs);
-		for (int cycle = 0; cycle < cyclelimit; cycle++)
-		{
-			if (newcustomer(min_per_cust))			// mamy nowego chêtnego
+		while (t_sr >= 1)
+		{	
+			
+			//cout << "Liczbe klientow  na godzine : " << perhour << endl;
+			//cout << "Maksymalna dlugosc kolejki wynosi : " << qs << endl;
+			//cout << "Sredni czas oczekiwania (w minutach) : " << t_sr << "\n\n";
+			Queue line(qs);
+			for (int cycle = 0; cycle < cyclelimit; cycle++)
 			{
-				if (line.isfull())
-					turnways++;
-				else
+				if (newcustomer(min_per_cust))			// mamy nowego chêtnego
 				{
-					customers++;
-					temp.set(cycle);				// czas przybycia = nr cyklu
-					line.enqueue(temp);				// do³¹czenie klienta do kolejki
+					if (line.isfull())
+						turnways++;
+					else
+					{
+						customers++;
+						temp.set(cycle);				// czas przybycia = nr cyklu
+						line.enqueue(temp);				// do³¹czenie klienta do kolejki
+					}
 				}
+
+				if (wait_time <= 0 && !line.isempty())
+				{
+					line.dequeue(temp);					// nastepny do obs³uzenia
+					wait_time = temp.ptime();			// czas obs³ugi = wait_time
+					line_wait += cycle - temp.when();
+					served++;
+				}
+
+				if (wait_time > 0)
+					wait_time--;
+
+				sum_line += line.quecount();
 			}
 
-			if (wait_time <= 0 && !line.isempty())
-			{
-				line.dequeue(temp);					// nastepny do obs³uzenia
-				wait_time = temp.ptime();			// czas obs³ugi = wait_time
-				line_wait += cycle - temp.when();
-				served++;
-			}
-
-			if (wait_time > 0)
-				wait_time--;
-
-			sum_line += line.quecount();
+			t_sr = (double)line_wait / served;
+			qs++;
 		}
 
-		t_sr = (double)line_wait / served;
+		min_per_cust++;
+		perhour = MIN_PER_HR / min_per_cust;
+		if (t_sr <= 1)
+		{
+			cout << "EUREKA! Liczba klientow na godzine " << perhour << " a ich sredni czas oczekiwania wynosi " << t_sr << "\n";
+		}
 	}
+
 
 //  rozpoczêcie  symulacji
 
