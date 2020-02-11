@@ -151,6 +151,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="13_7_Brass.cpp" />
+    <ClCompile Include="brass.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="brass.h" />

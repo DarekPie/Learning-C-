@@ -18,6 +18,9 @@
     <ClCompile Include="13_7_Brass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="brass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="brass.h">
