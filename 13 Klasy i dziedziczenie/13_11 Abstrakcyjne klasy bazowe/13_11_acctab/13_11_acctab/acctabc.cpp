@@ -56,7 +56,7 @@ void Brass::ViewAcct() const
 }
 
 //Metody klasy BrassPlus
-BrassPlus::BrassPlus(const char *s, long an, double bal, double ml, double r) : AcctABC(a, an, bal)
+BrassPlus::BrassPlus(const char *s, long an, double bal, double ml, double r) : AcctABC(s, an, bal)
 {
 	maxLoan = ml;
 	owesBank = 0.0;
