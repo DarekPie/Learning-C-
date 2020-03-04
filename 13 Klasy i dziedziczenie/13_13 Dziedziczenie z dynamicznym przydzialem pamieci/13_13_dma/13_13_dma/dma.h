@@ -33,15 +33,15 @@ class lacksDMA : public baseDMA
 };
 
 // Klasa pochodna z dynamicznym przydzialem pamieci
-class hadDMA : public baseDMA
+class hasDMA : public baseDMA
 {
 	private: 
 		char * style;
 	
 	public:
 		hasDMA(const char * s = "brak", const char * l = "brak", int r = 0);
-		hasDMA(const char * s, cont baseDMA & rs);
-		hasDMA(const hasDMA & hs);
+		hasDMA(const char * s, const baseDMA & rs);
+		hasDMA(const hasDMA & hs);				// wywoluje konstruktor kopiujacy klasy basowej
 		~hasDMA();
 		hasDMA & operator=(const hasDMA & rs);
 		friend std::ostream & operator<<(std::ostream & os, const hasDMA & rs);
