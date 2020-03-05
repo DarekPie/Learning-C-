@@ -75,8 +75,11 @@ lacksDMA::lacksDMA(const char * c, const baseDMA & rs) : baseDMA(rs)
 
 hasDMA::hasDMA(const char * s, const char * l, int r) : baseDMA(l,r)
 {
-	style = new char[std::strlen(s) + 1];
-	std::strcpy(style, s);
+	int lengh = std::strlen(s) + 1;
+//	style = new char[std::strlen(s) + 1];
+	style = new char[lengh];	
+//	std::strcpy(style, s);
+	strcpy_s(style, lengh, s);
 }
 
 hasDMA::hasDMA(const char * s, const baseDMA & rs) : baseDMA(rs)

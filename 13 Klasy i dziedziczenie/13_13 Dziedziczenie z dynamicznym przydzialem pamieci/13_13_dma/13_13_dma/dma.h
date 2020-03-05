@@ -26,7 +26,7 @@ class lacksDMA : public baseDMA
 		char color[COL_LEN];
 
 	public:
-		lacksDMA(const char *c = "brak", const char * l = brak, int r = 0);
+		lacksDMA(const char *c = "brak", const char * l = "brak", int r = 0);
 		lacksDMA(const char *c, const baseDMA &rs);
 		friend std::ostream & operator<<(std::ostream & os, const lacksDMA &rs);
 
