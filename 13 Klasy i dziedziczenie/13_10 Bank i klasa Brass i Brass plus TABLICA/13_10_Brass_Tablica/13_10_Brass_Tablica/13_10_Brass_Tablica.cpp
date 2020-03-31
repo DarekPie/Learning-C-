@@ -25,7 +25,7 @@ int main()
 		cin >> tempball;
 		cout << "Wpisz 1 dla rachunku Brass lub 2 dla rachunku BrassPlus: ";
 
-		while (cin >> kind && (kind != 49 && kind != 50))
+		while (cin >> kind && (kind != 49 && kind != 50))							//  ASCI II 49 == 1 i 50 == 2
 			cout << "Wpisz 1 lub 2: ";
 		if (kind == 49)
 			p_clients[i] = new Brass(temp, tempnum, tempball);
