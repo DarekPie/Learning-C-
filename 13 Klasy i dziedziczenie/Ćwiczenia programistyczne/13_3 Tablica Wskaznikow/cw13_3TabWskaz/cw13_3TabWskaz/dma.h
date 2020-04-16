@@ -17,6 +17,7 @@ public:
 	const char * getLabel() const { return label; }
 	int getRating() const { return rating; }
 	friend std::ostream & operator << (std::ostream & os, const ABCdma & rs);
+
 };
 
 
@@ -27,7 +28,7 @@ public:
 	baseDMA(const char * l = "brak", int r = 0) : ABCdma(l, r) {}
 	baseDMA(const baseDMA & rs) : ABCdma(rs) {}
 	virtual ~baseDMA() {}
-	virtual void View();
+	virtual void View() const;
 	baseDMA & operator=(const baseDMA & rs);
 	friend std::ostream & operator<<(std::ostream & os, const baseDMA & rs);
 };
@@ -44,7 +45,7 @@ private:
 public:
 	lacksDMA(const char *c = "brak", const char * l = "brak", int r = 0);
 	lacksDMA(const char *c, const ABCdma &rs);
-	virtual void View();
+	virtual void View() const;
 	friend std::ostream & operator<<(std::ostream & os, const lacksDMA &rs);
 
 };
@@ -60,7 +61,7 @@ public:
 	hasDMA(const char * s, const ABCdma & rs);
 	hasDMA(const hasDMA & hs);				// wywoluje konstruktor kopiujacy klasy basowej
 	~hasDMA();
-	virtual void View();
+	virtual void View() const;
 	hasDMA & operator=(const hasDMA & rs);
 	friend std::ostream & operator<<(std::ostream & os, const hasDMA & rs);
 };

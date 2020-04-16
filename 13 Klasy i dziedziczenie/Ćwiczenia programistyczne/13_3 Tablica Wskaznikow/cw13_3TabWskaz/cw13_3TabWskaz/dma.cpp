@@ -32,7 +32,7 @@ ABCdma & ABCdma::operator=(const ABCdma & rs)
 
 
 
-void baseDMA::View()
+void baseDMA::View() const
 {
 	std::cout << "Label = " << getLabel() << std::endl;
 	std::cout << "Rating = " << getRating() << std::endl;
@@ -92,7 +92,7 @@ lacksDMA::lacksDMA(const char * c, const ABCdma & rs) : ABCdma(rs)
 	color[COL_LEN - 1] = '\0';
 }
 
-void lacksDMA::View()
+void lacksDMA::View() const
 {
 	std::cout << "Label = " << getLabel() << std::endl;
 	std::cout << "Rating = " << getRating() << std::endl;
@@ -134,7 +134,7 @@ hasDMA::~hasDMA()
 	delete[] style;
 }
 
-void hasDMA::View()
+void hasDMA::View() const
 {
 	std::cout << "Label = " << getLabel() << std::endl;
 	std::cout << "Rating = " << getRating() << std::endl;
