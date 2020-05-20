@@ -18,6 +18,9 @@
     <ClCompile Include="14_1_Studentc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="studentc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="studentc.h">

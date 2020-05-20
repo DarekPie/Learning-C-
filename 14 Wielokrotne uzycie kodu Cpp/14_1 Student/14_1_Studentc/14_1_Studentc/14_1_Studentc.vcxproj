@@ -151,6 +151,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="14_1_Studentc.cpp" />
+    <ClCompile Include="studentc.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="studentc.h" />
