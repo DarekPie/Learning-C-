@@ -20,10 +20,12 @@ class Student : private std::string, private std::valarray<double>			// Dziedzic
 		Student(const std::string & s, const ArrayDb & a)	: std::string(s), ArrayDb(a) {}
 		Student(const char * str, const double * pd, int n) : std::string(str), ArrayDb(pd, n) {}
 		~Student() {}
+
 		double Avarege() const;
 		double & operator[](int i);
 		double operator[](int i) const;
-		const std::string  & Name() const;
+		const std::string  & Name() const;					// Rzutowanie typu do referencji 
+
 	//Funkcje zaprzyjaznione
 		//Obsluga wejscia
 		friend std::istream & operator>>(std::istream & is, Student & stu);			// 1 slowo

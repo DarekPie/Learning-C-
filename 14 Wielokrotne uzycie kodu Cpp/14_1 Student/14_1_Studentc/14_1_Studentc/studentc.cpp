@@ -1,4 +1,5 @@
 #include "studentc.h"
+#include <iostream>						// Wymagane! 
 using std::ostream;
 using std::endl;
 using std::istream;
