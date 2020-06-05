@@ -1,4 +1,4 @@
-#include "Worker0.h"
+#include "worker.h"
 #include <iostream>
 #include <string>
 
@@ -45,7 +45,7 @@ void Waiter::Show() const
 }
 
 //Metody klasy singer
-char * Singer::pv[] = <char*>{ "inny", "alt", "kontralt", "sopran", "bas", "baryton", "tenor" };   // dodanie const ze wzgledu na char ktory jest static
+const char * Singer::pv[] = { "inny", "alt", "kontralt", "sopran", "bas", "baryton", "tenor" };   // dodanie const ze wzgledu na char ktory jest static
 
 void Singer::Set()
 {

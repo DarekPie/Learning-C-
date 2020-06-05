@@ -37,7 +37,7 @@ class Singer : public Worker
 		enum {Vtypes = 7};
 
 	private:	
-		static char *pv[Vtypes];		// Odpowiednik typu glosu w postci ciagu znakow
+		static const char *pv[Vtypes];		// Odpowiednik typu glosu w postci ciagu znakow
 		int voice;
 
 	public:

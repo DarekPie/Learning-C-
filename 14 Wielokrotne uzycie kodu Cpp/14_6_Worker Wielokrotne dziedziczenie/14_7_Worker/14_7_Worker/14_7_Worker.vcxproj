@@ -154,7 +154,7 @@
     <ClCompile Include="worker0.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Worker0.h" />
+    <ClInclude Include="worker.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
