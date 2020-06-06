@@ -8,7 +8,7 @@
 class Student
 {
 	private:
-		typedef std::valarray<double> ArrayDb;
+		typedef std::valarray<double> ArrayDb;							// typdef - dzieki czemu nie trzeba uzywac wszedzie w kodzie std::valarray<double>
 		std::string name;			// Obiekt zawierany
 		ArrayDb scores;				// Obiekt zawierany
 		//Prywatna metoda do wyswietlania wynikow
