@@ -26,7 +26,7 @@ class Waiter : public Worker
 
 	public:
 		Waiter() : Worker(), panache(0) {}
-		Wiater(const std::string & s, long n, int p = 0) : Worker(s, n), panache(p) {}
+		Waiter(const std::string & s, long n, int p = 0) : Worker(s, n), panache(p) {}
 		Waiter(const Worker & wk, int p = 0) : Worker(wk), panache(p) {}
 		void Set();
 		void Show() const;
@@ -40,7 +40,7 @@ class Singer : public Worker
 		enum {Vtypes = 7};
 		
 	private:
-		static char *pv[Vtypes];		//Odpowiednik typu glosu w postaci ciagu znakow
+		static const char *pv[Vtypes];		//Odpowiednik typu glosu w postaci ciagu znakow
 		int voice;
 
 	public:

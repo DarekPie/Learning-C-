@@ -31,7 +31,7 @@ void Waiter::Set()
 	Worker::Set();
 	cout << "Podaj poziom elegancji kelnera: ";
 	cin >> panache;
-	while (cin.getline() != '\n')
+	while (cin.get() != '\n')
 		continue;
 }
 
@@ -43,7 +43,7 @@ void Waiter::Show() const
 }
 
 //Metody klasy Singer
-char * Singer::pv[] = { "inny", "alt", "kontralt", "sopran", "bas", "baryton", "tenor" };
+const char * Singer::pv[] = { "inny", "alt", "kontralt", "sopran", "bas", "baryton", "tenor" };
 
 void Singer::Set()
 {
