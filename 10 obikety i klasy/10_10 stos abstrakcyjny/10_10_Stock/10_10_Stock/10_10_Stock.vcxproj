@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="10_10_Stock.cpp" />
+    <ClCompile Include="stock.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stock.h" />
