@@ -6,7 +6,7 @@ class Stack
 {
 	private:
 		enum { MAX = 10 };
-		Type item[MAX];
+		Type items[MAX];
 		int top;
 
 	public:
@@ -32,7 +32,7 @@ bool Stack<Type>::isempty()
 template <class Type>
 bool Stack<Type>::isfull()
 {
-	reurn top == MAX;
+	return top == MAX;
 }
 
 template <class Type>
