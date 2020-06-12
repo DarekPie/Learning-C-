@@ -38,7 +38,7 @@ int main()
 		else if (std::rand() % 2 && nextin < Num) // Szanse pol na pol
 			st.push(in[nextin++]);
 		else
-			st.pop(out[processed++]);
+			st.pop(out[processed++]);				// Wg zasady ¿e szansa pó³ na pó³ ¿e teczka idzie na sterte wychodzace i pó³ na pó³ na wraca spowrotem
 	}
 
 	for (int i = 0; i < Num; i++)
