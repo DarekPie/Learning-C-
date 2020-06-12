@@ -38,7 +38,7 @@ Stack<Type>::Stack(const Stack & st)
 }
 
 template <class Type>
-Stack<Type>::push(const Type & item)
+bool Stack<Type>::push(const Type & item)
 {
 	if (top < stacksize)
 	{
@@ -50,7 +50,7 @@ Stack<Type>::push(const Type & item)
 }
 
 template <class Type>
-Stack<Type>::pop(Type & item)
+bool Stack<Type>::pop(Type & item)
 {
 	if (top > 0) 
 	{
