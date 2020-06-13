@@ -14,7 +14,7 @@ class ArrayTP
 		ArrayTP() {};
 		explicit ArrayTP(const T & v);
 		virtual T &  operator[](int i);
-		virutal T operator[](int i) const;
+		virtual T operator[](int i) const; 
 };
 
 
@@ -30,18 +30,18 @@ T & ArrayTP<T, n>::operator[](int i)
 {
 	if (i < 0 || i >= n)
 	{
-		std::crr << "Blad zakresu tablicy: " << i << " jest po za zakresem\n";
+		std::cerr << "Blad zakresu tablicy: " << i << " jest po za zakresem\n";
 		std::exit(EXIT_FAILURE);
 	}
 	return ar[i];
 }
 
 template<class T, int n>
-T ArrayTP<T, n>::operator[](int i)
+T ArrayTP<T, n>::operator[](int i) const
 {
 	if (i < 0 || i >= n)
 	{
-		std::crr << "Blad zakresu tablicy: " << i << " jest po za zakresem\n";
+		std::cerr << "Blad zakresu tablicy: " << i << " jest po za zakresem\n";
 		std::exit(EXIT_FAILURE);
 	}
 	return ar[i];
