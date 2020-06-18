@@ -1,20 +1,43 @@
-﻿// 14_23_tmp2tmp.cpp : Ten plik zawiera funkcję „main”. W nim rozpoczyna się i kończy wykonywanie programu.
-//
+﻿#include <iostream>
+using std::cout;
+using std::endl;
 
-#include <iostream>
+//Prototypy szablonow
+template <typename T> void counts();
+template <typename T> void reports(T &);
+
+//Szablony klasy
+template <typename TT>
+class HasFriendT
+{
+	private:
+		TT item;
+		static int ct;
+
+	public:
+		HasFriendT(const TT & i) : item(i) { ct++; }
+		HasFriendT() { ct--; }
+		friend void counts<TT>();
+		friend void reports(HasFriendT<TT> &);
+};
+
+template <typename T>
+int HasFriendT<T>::ct = 0;
+
+//definicje szablonow funkcji zaprzyjaznionych
+template <typename T>
+void  counts()
+{
+	cout << "Szablona size: " << sizeof(HasFriendT<T>) << "; ";
+	cout << "Szablon counts(): " << HasFriendT<T>::ct << endl;
+}
+
+
+
+
 
 int main()
 {
     std::cout << "Hello World!\n";
 }
 
-// Uruchomienie programu: Ctrl + F5 lub menu Debugowanie > Uruchom bez debugowania
-// Debugowanie programu: F5 lub menu Debugowanie > Rozpocznij debugowanie
-
-// Porady dotyczące rozpoczynania pracy:
-//   1. Użyj okna Eksploratora rozwiązań, aby dodać pliki i zarządzać nimi
-//   2. Użyj okna programu Team Explorer, aby nawiązać połączenie z kontrolą źródła
-//   3. Użyj okna Dane wyjściowe, aby sprawdzić dane wyjściowe kompilacji i inne komunikaty
-//   4. Użyj okna Lista błędów, aby zobaczyć błędy
-//   5. Wybierz pozycję Projekt > Dodaj nowy element, aby utworzyć nowe pliki kodu, lub wybierz pozycję Projekt > Dodaj istniejący element, aby dodać istniejące pliku kodu do projektu
-//   6. Aby w przyszłości ponownie otworzyć ten projekt, przejdź do pozycji Plik > Otwórz > Projekt i wybierz plik sln
