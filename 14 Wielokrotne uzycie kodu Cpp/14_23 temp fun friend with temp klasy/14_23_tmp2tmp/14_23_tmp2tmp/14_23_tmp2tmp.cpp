@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 using std::cout;
 using std::endl;
 
@@ -18,7 +18,7 @@ class HasFriendT
 		HasFriendT(const TT & i) : item(i) { ct++; }
 		HasFriendT() { ct--; }
 		friend void counts<TT>();
-		friend void reports(HasFriendT<TT> &);
+		friend void reports<>(HasFriendT<TT> &);
 };
 
 template <typename T>
@@ -32,10 +32,27 @@ void  counts()
 	cout << "Szablon counts(): " << HasFriendT<T>::ct << endl;
 }
 
-
+template <typename T>
+void reports(T & hf)
+{
+	cout << hf.item << endl;
+}
 
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	counts<int>(); 
+	HasFriendT<int> hif1(10);
+	HasFriendT<int> hif2(20);
+	HasFriendT<double> hfdb(10.5);
+	reports(hif1);
+	reports(hif2);
+	reports(hfdb);
+
+	cout << "Wynik dzialania countr<int>(): \n";
+	counts<int>();
+	cout << "Wynik dzialania countr<double>(): \n";
+	counts<double>();
+
+	return 0;
 }
