@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 ﻿#include <iostream>
 using std::cout;
 using std::endl;
@@ -35,16 +34,8 @@ void  counts()
 
 
 
-=======
-﻿
->>>>>>> Stashed changes
-
 
 int main()
 {
     std::cout << "Hello World!\n";
 }
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
