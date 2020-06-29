@@ -4,18 +4,19 @@
 template <class Type>				// moze byc nowszy sposob template <typename Type> 
 class Stack
 {
-private:
-	enum { MAX = 10 };
-	Type items[MAX];
-	int top;
+	private:
+		enum { MAX = 10 };
+		Type items[MAX];
+		int top;
 
-public:
-	Stack();
-	bool isempty();
-	bool isfull();
-	bool push(const Type & item);
-	bool pop(Type & item);
+	public:
+		Stack();
+		bool isempty();
+		bool isfull();
+		bool push(const Type & item);
+		bool pop(Type & item);
 };
+
 
 template <class Type>
 Stack<Type>::Stack()
