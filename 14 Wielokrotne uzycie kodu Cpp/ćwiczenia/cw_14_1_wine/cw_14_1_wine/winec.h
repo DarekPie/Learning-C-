@@ -42,18 +42,20 @@ class Wine
 	private:
 		typedef std::valarray<int> ArrayInt;
 		typedef Pair<ArrayInt, ArrayInt> PairArray;
+		std::string wineName;
 		PairArray wina;									// podajesz tutaj roczniki wina i liczbe butelek
 		int liczbaRocznikow;
 
 	public:
-		Wine() : wina(0, 0), liczbaRocznikow(0) {}
+		Wine() : wineName( "brak" ), wina(), liczbaRocznikow(0) {}
 		// l - label, y- liczba lat, yr - rocznik, bot - liczba butelek (skladowa)
-		Wine(const char * l, int y, const int yr[], const int bot[]);
-		// l - label, y- liczba lat
-		Wine(const char * l, int y);
-		void GetBottles();				// pobiera roczniki i liczbe butelek
+		Wine(const char * l, int y,  int yr, int bot)	: wineName(l), liczbaRocznikow(y), wina(yr, bot) {}
+		// l - label, y- liczba roczników danego wina
+		Wine(const char * l, int y)						: wineName(l), liczbaRocznikow(y) {}
+		void Show();
+		void GetBottles();				// pobiera roczniki i liczbe butelek prosi uzytkownika o podanie ich
 		PairArray Label();					// zwraca referencje do nazwy wina
-
+		//
 
 
 

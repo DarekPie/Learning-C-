@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="cw_14_1_wine.cpp" />
+    <ClCompile Include="winec.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="winec.h" />

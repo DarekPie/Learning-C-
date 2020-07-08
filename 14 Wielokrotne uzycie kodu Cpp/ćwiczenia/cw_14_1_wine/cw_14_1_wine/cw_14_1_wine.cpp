@@ -13,7 +13,8 @@ int main()
 	int yrs;
 	cin >> yrs;
 
-	cout << " Podaj nazwe: " << lab << " liczba rocznikow: " << yrs << endl;
+	Wine holding(lab, yrs);
+	holding.Show();
 
 
 }
