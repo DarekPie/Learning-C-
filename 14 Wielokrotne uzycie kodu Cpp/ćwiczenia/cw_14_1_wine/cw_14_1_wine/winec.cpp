@@ -1,8 +1,13 @@
 #include "winec.h"
 #include <iostream>
+#include <cstring>
+
 using std::cout;
 using std::endl;
 using std::cin;
+
+
+
 
 void Wine::Show()
 {
