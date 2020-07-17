@@ -52,7 +52,7 @@ class Wine
 		// l - label, y- liczba lat, yr - rocznik, bot - liczba butelek (skladowa)
 		// valarray<double> v4(gpa, 4); - gpa- tablica 4 elementow zainicjalizowana za pomoca czterech pierwszych elementow tablicy gpa
 		Wine(const char * l, int y, int yr[], int bot[])	: wineName(l), liczbaRocznikow(y), wina(ArrayInt(yr, y), ArrayInt(bot, y)) {}
-
+s
 		// l - label, y- liczba roczników danego wina
 		// vallarray<int> v2(8); - Tablica liczb calkowitych, 8 elementow. 
 		Wine(const char * l, int y)							: wineName(l), liczbaRocznikow(y), wina(ArrayInt(y), ArrayInt(y)) {}
@@ -60,9 +60,6 @@ class Wine
 		void Show();
 		void GetBottles();				// pobiera roczniki i liczbe butelek prosi uzytkownika o podanie ich, 
 		PairArray Label();					// zwraca referencje do nazwy wina
-		//
-
-
 
 };
 
