@@ -12,7 +12,7 @@ const int quizzes = 5;
 int main()
 {
 	Student ada[pupils] =
-	{ Student(quizzes), Student(quizzes), Student(quizzes) };
+	{ Student(quizzes), Student(quizzes), Student(quizzes) }; 
 	int i;
 	for (i = 0; i < pupils; i++)
 		set(ada[i], quizzes);
