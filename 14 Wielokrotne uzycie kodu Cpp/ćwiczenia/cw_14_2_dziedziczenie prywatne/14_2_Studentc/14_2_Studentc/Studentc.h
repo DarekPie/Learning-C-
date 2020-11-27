@@ -14,12 +14,12 @@ private:
 	//Prywatna metoda do wyswietlania wynikow
 	std::ostream & arr_out(std::ostream &os) const;
 public:
-	Student() : name("Brak"), scores() {}
-	Student(const std::string & s) : name(s), scores() {}
-	explicit Student(int n) : name("Brak"), scores(n) {}		// explicit powoduje wychwyceniu wyjatku zwiazanego z utworzeniem tablicy pustych obiektow
-	Student(const std::string & s, int n) : name(s), scores(n) {}				// ? 
-	Student(const std::string & s, const ArrayDb & a) : name(s), scores(a) {}				// score - tablica wartosci typu ArrayDb wiec double
-	Student(const char * str, const double * pd, int n) : name(str), scores(pd, n) {}		//score - tablica n elementow zainicjalizowana 																						//za pomoc czterech pierwszych elementow tablicy pd
+	Student()												: name("Brak"), scores() {}
+	Student(const std::string & s)							: name(s), scores() {}
+	explicit Student(int n)									: name("Brak"), scores(n) {}		// explicit powoduje wychwyceniu wyjatku zwiazanego z utworzeniem tablicy pustych obiektow
+	Student(const std::string & s, int n)					: name(s), scores(n) {}				// ? 
+	Student(const std::string & s, const ArrayDb & a)		: name(s), scores(a) {}				// score - tablica wartosci typu ArrayDb wiec double
+	Student(const char * str, const double * pd, int n)		: name(str), scores(pd, n) {}		//score - tablica n elementow zainicjalizowana 																						//za pomoc czterech pierwszych elementow tablicy pd
 	~Student() {}
 
 	double Average() const;
