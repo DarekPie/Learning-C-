@@ -6,12 +6,12 @@
 
 class Movies {
 	private:
-		std::vector<Movies> movies;
+		std::vector<Movie> movies;
 
 	public:
 		Movies();
 		~Movies();
-		bool add_movie(std::string name, std::string rateing, int watched);
+		bool add_movie(std::string name, std::string rating, int watched);
 		bool increment_watched(std::string name);
 		void display() const;
 };
