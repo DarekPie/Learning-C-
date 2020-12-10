@@ -1,8 +1,16 @@
 
 #include <iostream>
+#include "Mystring.h"
+using namespace std;
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    cout << "Hello World!\n";
+
+	MyString a{ "frank" };
+	MyString b{ "frank" };
+
+	cout << (a==b) << endl;		//true
+
 }
 
