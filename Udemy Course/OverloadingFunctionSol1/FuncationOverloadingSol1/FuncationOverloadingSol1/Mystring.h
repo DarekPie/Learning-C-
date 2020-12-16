@@ -34,6 +34,9 @@ public:
 	MyString &operator++();								//pre-inkrementcja ++s1;
 	MyString operator++(int);							// post-inkrementacja s1++;
 
+	friend std::ostream &operator<<(std::ostream &os, const MyString &obj);
+	friend std::istream &operator>>(std::istream &in, MyString &obj);
+
 
 /*
 	friend bool operator==(const MyString &lobj, const MyString &robj);

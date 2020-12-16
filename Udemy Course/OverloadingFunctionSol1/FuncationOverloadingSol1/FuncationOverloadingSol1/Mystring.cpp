@@ -11,7 +11,9 @@ MyString::MyString() : str{ nullptr }
 
 MyString::MyString(const char * s) : str{ nullptr }
 {
-
+	int len = strlen(s) + 1;
+	str = new char[len];
+	strcpy_s(str, len, s);
 }
 
 MyString::MyString(const MyString & obj) : str{ nullptr }
@@ -22,8 +24,10 @@ MyString::MyString(const MyString & obj) : str{ nullptr }
 
 }
 
-MyString::MyString(MyString && obj)
+MyString::MyString(MyString && obj) :str{obj.str}
 {
+	obj.str = nullptr;
+//	std::cout << "Move constructor - moving resources: " << *str << std::endl;
 }
 
 MyString::~MyString()
@@ -33,12 +37,26 @@ MyString::~MyString()
 
 MyString & MyString::operator=(const MyString & obj)
 {
-	// TODO: tu wstawiæ instrukcjê return
+//	std::cout << "Using copy assignment" << std::endl;
+
+	if (this == &obj)
+		return *this;
+	delete[] str;
+	int len = strlen(obj.str) + 1;
+	strcpy_s(str, len + 1, obj.str);
+	return *this;
 }
 
 MyString & MyString::operator=(MyString && obj)
 {
-	// TODO: tu wstawiæ instrukcjê return
+//	std::cout << "Using move assignment" << std::endl;
+	if (this == &obj)
+		return *this;
+	delete[] str;
+	str = obj.str;
+	obj.str = nullptr;
+	return *this;
+
 }
 
 void MyString::display() const
@@ -59,7 +77,8 @@ MyString MyString::operator-() const
 {
 	int len = std::strlen(str);
 	char *buff = new char[len + 1];
-	std::strcpy(buff, str);
+//	std::strcpy(buff, str);
+	strcpy_s(buff, len + 1, str);
 	for (size_t i = 0; i < len; i++)
 		buff[i] = tolower(buff[i]);  
 
@@ -70,8 +89,29 @@ MyString MyString::operator-() const
 }
 
 MyString MyString::operator+(const MyString & rhs) const
-{
-	return MyString();
+{/*
+	int len = std::strlen(str);
+	char *buff = new char[len + 1];
+	std::strcpy(buff, str);
+	for (size_t i = 0; i < len; i++)
+		buff[i] = toupper(buff[i]);
+
+	MyString temp{ buff };
+	delete[] buff;
+
+	return temp;
+	*/
+	int len = std::strlen(str) + std::strlen(rhs.str) + 1;
+	char  *buff = new char[len];
+	//std::strcpy(buff, str);
+	strcpy_s(buff, len + 1, str);
+//	std::strcat(buff, rhs.str);
+	strcat_s(buff, len + 1,  rhs.str);
+	MyString temp{buff};
+//	if(buff)
+//		delete [] buff;
+//	buff = nullptr;
+	return temp;
 }
 
 bool MyString::operator==(const MyString & rhs) const
@@ -92,4 +132,85 @@ bool MyString::operator<(const MyString & rhs) const
 bool MyString::operator>(const MyString & rhs) const
 {
 	return(std::strcmp(str, rhs.str) > 0);
+}
+
+MyString & MyString::operator+=(const MyString & rhs)
+{
+
+	*this = *this + rhs;					//odwoluje sie do  MyString::operator+(const MyString & rhs) const;
+	return *this;
+}
+
+// powtarzanie - repeating
+MyString MyString::operator*(int n) const
+{
+	MyString temp;
+	for (int i = 1; i <= n; i++)
+		temp = temp + *this;
+	return temp;
+
+
+	// ewemtualnie!		
+/*	size_t buff_size = std::strlen(str) * n + 1;
+	char *buff = new char[buff_size];
+	strcpy(buff, "");								// VS moze miec problem - wtedy stosowac strcpy_s("", "", "");
+	for (int i = 1; i <= n; i++)
+		strcat(buff, str);
+	MyString temp2(buff);
+	delete[] buff;
+	return temp;
+*/
+}
+
+MyString & MyString::operator*=(int n)
+{
+	*this = *this * n;						// odwoluje sie do MyString::operator*(int n) const;
+	return *this;
+}
+
+MyString & MyString::operator++()					//preincrement			-> error!!!!!!!!!!
+{
+	for (size_t i = 0; i < std::strlen(str); i++)
+		str[i] = toupper(str[i]);
+	return *this;
+}
+
+MyString MyString::operator++(int)					// post increment
+{
+	MyString temp(*this);			//make a copy
+	operator++();					
+	return temp;
+}
+
+std::ostream & operator<<(std::ostream & os, const MyString & obj)
+{
+	os << obj.str;
+	return os;
+}
+
+std::istream & operator>>(std::istream & in, MyString & obj)
+{
+	//int len = strlen(s) + 1;
+	//str = new char[len];
+	//strcpy_s(str, len, s);
+
+
+
+	//int len = std::strlen(str);
+	//char *buff = new char[len + 1];
+	////	std::strcpy(buff, str);
+	//strcpy_s(buff, len + 1, str);
+	//for (size_t i = 0; i < len; i++)
+	//	buff[i] = tolower(buff[i]);
+
+	//MyString temp{ buff };
+	//delete[] buff;
+
+
+	char *buff = new char[1000];			// ostroznie liczac ze moze sie tyle nada
+	in >> buff;
+	obj = MyString{ buff };					// nie za bardzo rozumiem 
+	delete[] buff;
+	return in;								// zwracamy przez referencje!
+
 }
