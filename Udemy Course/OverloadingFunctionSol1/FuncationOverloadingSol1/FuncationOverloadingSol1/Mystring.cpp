@@ -1,8 +1,7 @@
 #include <iostream>
 #include "Mystring.h"
 #include <cstring>
-#include <stdio.h>
-#include <ctype.h>
+
 MyString::MyString() : str{ nullptr }
 {
 	str = new char[1];
@@ -11,9 +10,17 @@ MyString::MyString() : str{ nullptr }
 
 MyString::MyString(const char * s) : str{ nullptr }
 {
-	int len = strlen(s) + 1;
-	str = new char[len];
-	strcpy_s(str, len, s);
+	if (s == nullptr)
+	{
+		str = new char[1];
+		*str = '\0';
+	}
+	else
+	{
+		int len = strlen(s) + 1;
+		str = new char[len];
+		strcpy_s(str, len, s);
+	}
 }
 
 MyString::MyString(const MyString & obj) : str{ nullptr }
@@ -37,12 +44,11 @@ MyString::~MyString()
 
 MyString & MyString::operator=(const MyString & obj)
 {
-//	std::cout << "Using copy assignment" << std::endl;
-
 	if (this == &obj)
 		return *this;
 	delete[] str;
 	int len = strlen(obj.str) + 1;
+	str = new char[len];					// BRAK BY£, ISTOTNY JAK CHOLERA!
 	strcpy_s(str, len + 1, obj.str);
 	return *this;
 }
@@ -61,11 +67,12 @@ MyString & MyString::operator=(MyString && obj)
 
 void MyString::display() const
 {
+	std::cout << str << " : " << get_lengh() << std::endl;
 }
 
 int MyString::get_lengh() const
 {
-	return 0;
+	return strlen(str);
 }
 
 const char * MyString::get_str() const
@@ -89,21 +96,10 @@ MyString MyString::operator-() const
 }
 
 MyString MyString::operator+(const MyString & rhs) const
-{/*
-	int len = std::strlen(str);
-	char *buff = new char[len + 1];
-	std::strcpy(buff, str);
-	for (size_t i = 0; i < len; i++)
-		buff[i] = toupper(buff[i]);
+{
+	int len = std::strlen(str) + std::strlen(rhs.str);
+	char  *buff = new char[len + 1];
 
-	MyString temp{ buff };
-	delete[] buff;
-
-	return temp;
-	*/
-	int len = std::strlen(str) + std::strlen(rhs.str) + 1;
-	char  *buff = new char[len];
-	//std::strcpy(buff, str);
 	strcpy_s(buff, len + 1, str);
 //	std::strcat(buff, rhs.str);
 	strcat_s(buff, len + 1,  rhs.str);
@@ -190,23 +186,6 @@ std::ostream & operator<<(std::ostream & os, const MyString & obj)
 
 std::istream & operator>>(std::istream & in, MyString & obj)
 {
-	//int len = strlen(s) + 1;
-	//str = new char[len];
-	//strcpy_s(str, len, s);
-
-
-
-	//int len = std::strlen(str);
-	//char *buff = new char[len + 1];
-	////	std::strcpy(buff, str);
-	//strcpy_s(buff, len + 1, str);
-	//for (size_t i = 0; i < len; i++)
-	//	buff[i] = tolower(buff[i]);
-
-	//MyString temp{ buff };
-	//delete[] buff;
-
-
 	char *buff = new char[1000];			// ostroznie liczac ze moze sie tyle nada
 	in >> buff;
 	obj = MyString{ buff };					// nie za bardzo rozumiem 

@@ -60,7 +60,7 @@ int main()
 	cout << s << endl << endl;
 // error	
 	MyString result;
-	result = s++;
+	result = ++s;
 	//cout << s << endl;
 	//cout << result << endl << endl;
 
