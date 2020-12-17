@@ -49,7 +49,7 @@ MyString & MyString::operator=(const MyString & obj)
 	delete[] str;
 	int len = strlen(obj.str) + 1;
 	str = new char[len];					// BRAK BY£, ISTOTNY JAK CHOLERA!
-	strcpy_s(str, len + 1, obj.str);
+	strcpy_s(str, len, obj.str);
 	return *this;
 }
 
@@ -77,16 +77,16 @@ int MyString::get_lengh() const
 
 const char * MyString::get_str() const
 {
-	return nullptr;
+	return str;
 }
 
 MyString MyString::operator-() const
 {
-	int len = std::strlen(str);
+	int len = strlen(str);
 	char *buff = new char[len + 1];
 //	std::strcpy(buff, str);
 	strcpy_s(buff, len + 1, str);
-	for (size_t i = 0; i < len; i++)
+	for (size_t i = 0; i < strlen(buff); i++)
 		buff[i] = tolower(buff[i]);  
 
 	MyString temp{ buff };
@@ -105,7 +105,7 @@ MyString MyString::operator+(const MyString & rhs) const
 	strcat_s(buff, len + 1,  rhs.str);
 	MyString temp{buff};
 //	if(buff)
-//		delete [] buff;
+	delete [] buff;
 //	buff = nullptr;
 	return temp;
 }
