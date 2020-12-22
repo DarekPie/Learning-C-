@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{B088AAAF-F369-4608-969D-658BBBA18B7B}</ProjectGuid>
+    <ProjectGuid>{5D0F2A46-2C47-4D29-95C0-4750636DC0D9}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>ConsoleApplication1</RootNamespace>
+    <RootNamespace>FunOverNonMemSol2</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -151,13 +151,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ConsoleApplication1.cpp" />
-    <ClCompile Include="Movie.cpp" />
-    <ClCompile Include="Movies.cpp" />
+    <ClCompile Include="FunOverNonMemSol2.cpp" />
+    <ClCompile Include="Mystring.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Movie.h" />
-    <ClInclude Include="Movies.h" />
+    <ClInclude Include="Mystring.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
