@@ -20,6 +20,7 @@ public:
 	T2 second() const { return b; }
 	Pair(const T1 & aval, const T2 & bval) : a(aval), b(bval) {}
 	Pair() {}
+	Pair(const Pair<T1, T2> & p);
 };
 
 template<class T1, class T2>
@@ -42,26 +43,28 @@ class Wine
 	private:
 		typedef std::valarray<int> ArrayInt;
 		typedef Pair<ArrayInt, ArrayInt> PairArray;
-		std::string wineName;
+		
 //ALIASY ! Pair<std::valarray<int>, std::valarray<int>> wina ->  Pair<ArrayInt, ArrayInt> wina -> PairArray wina ALIASY!!!
-		PairArray wina;									// podajesz tutaj roczniki wina i liczbe butelek
-		int liczbaRocznikow;
+		std::string label;			// nazwa wina
+		PairArray data;				//  liczba poszczegolnych rocznikow
+		int years;
 
 	public:
-		Wine() : wineName( "brak" ), wina(), liczbaRocznikow(0) {}
+		Wine(); //: wineName( "brak" ), wina(), liczbaRocznikow(0) {}
 
 		// l - label, y- liczba lat, yr - rocznik, bot - liczba butelek (skladowa)
 		// valarray<double> v4(gpa, 4); - gpa- tablica 4 elementow zainicjalizowana za pomoca czterech pierwszych elementow tablicy gpa
-		Wine(const char * l, int y, int yr[], int bot[])	: wineName(l), liczbaRocznikow(y), wina(ArrayInt(yr, y), ArrayInt(bot, y)) {}
+		Wine(const char * l, int y, const int yr[], const int bot[]);	//: wineName(l), liczbaRocznikow(y), wina(ArrayInt(yr, y), ArrayInt(bot, y)) {}
 
 		// l - label, y- liczba roczników danego wina
 		// vallarray<int> v2(8); - Tablica liczb calkowitych, 8 elementow. 
-		Wine(const char * l, int y)							: wineName(l), liczbaRocznikow(y), wina(ArrayInt(y), ArrayInt(y)) {}
+		Wine(const char * l, int y);							//: wineName(l), liczbaRocznikow(y), wina(ArrayInt(y), ArrayInt(y)) {}
+//		Wine(const Wine & w);
 
-		void Show();
+		void Show() const;
 		void GetBottles();				// pobiera roczniki i liczbe butelek prosi uzytkownika o podanie ich, 
-		std::string Label() { return &wineName; }			// zwraca referencje do nazwy wina
-		int sum();
+		const std::string & Label() const { return label; }			// zwraca referencje do nazwy wina
+		int sum() const;
 
 
 
