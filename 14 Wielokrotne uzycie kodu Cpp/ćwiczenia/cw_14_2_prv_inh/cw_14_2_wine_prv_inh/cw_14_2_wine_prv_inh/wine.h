@@ -1,4 +1,6 @@
-#pragma once
+#ifndef WINE_H_
+#define WINE_H_
+
 
 #include <string>
 #include <valarray>
@@ -12,7 +14,7 @@ class Pair
 		T2 b;
 
 	public:
-		Pair(const T1 & aval, const T2 & bcal) : a(aval), b(bval) {}
+		Pair(const T1 & aval, const T2 & bval) : a(aval), b(bval) {}
 		Pair() {}
 		Pair(const Pair<T1, T2> & p);
 		T1 & first();
@@ -59,3 +61,5 @@ class Wine : private std::string, private Pair<std::valarray<int>, std::valarray
 		void Show() const;
 
 };
+
+#endif // !WINE_H_

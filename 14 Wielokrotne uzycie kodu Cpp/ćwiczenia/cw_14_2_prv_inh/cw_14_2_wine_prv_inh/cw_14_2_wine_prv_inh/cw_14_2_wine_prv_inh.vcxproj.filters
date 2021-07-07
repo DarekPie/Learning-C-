@@ -18,5 +18,13 @@
     <ClCompile Include="cw_14_2_wine_prv_inh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="wine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="wine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
