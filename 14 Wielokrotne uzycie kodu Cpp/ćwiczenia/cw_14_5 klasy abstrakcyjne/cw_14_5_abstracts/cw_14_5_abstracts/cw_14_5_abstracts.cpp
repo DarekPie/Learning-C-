@@ -18,7 +18,7 @@ int main()
 	fi.ShowAll();
 
 	highfink hf(ma, "Jan Kudlaty");			//Rekrutacja?
-	hf.ShowAll;
+	hf.ShowAll();
 
 	cout << "Wicnij dowolny przecisk, aby przejsc do nastepnego etapu:\n";
 
