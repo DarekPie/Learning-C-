@@ -38,7 +38,7 @@ private:
 	int input;						// Telewziaja lub video
 
 public:
-	friend class Remote;				// klasa Remote posiada dostep do prywatnych danych Tv
+	friend void Remote::set_Chan(Tv & t, int c);
 	enum { Off, On };
 	enum { MinVal, MaxVal = 20 };
 	enum { Antenna, Cable };
