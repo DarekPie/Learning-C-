@@ -12,7 +12,7 @@ int main()
 		try {
 			z = hmean(x, y);
 		}
-		catch (const char * s)
+		catch (const char * s )
 		{
 			std::cout << s << std::endl;
 			std::cout << "Podaj kolejna pare liczb: ";
